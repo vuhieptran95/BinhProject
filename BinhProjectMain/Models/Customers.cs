@@ -24,6 +24,6 @@ namespace BinhProjectMain.Models
         public string Fax { get; set; }
 
         public virtual ICollection<CustomerCustomerDemo> CustomerCustomerDemo { get; set; }
-        public virtual ICollection<Orders> Orders { get; set; }
+        public ICollection<Orders> Orders { get; set; }
     }
 }

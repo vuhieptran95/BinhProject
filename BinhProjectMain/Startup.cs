@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using BinhProjectMain.Models;
 using BinhProjectMain.Services;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace BinhProjectMain
             services.AddDbContext<NorthwindContext>();
 
             services.AddScoped<IOrderServices, OrderServices>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

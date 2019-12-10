@@ -15,19 +15,19 @@ namespace BinhProjectMain.Models
         {
         }
 
-        public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<CustomerCustomerDemo> CustomerCustomerDemo { get; set; }
-        public virtual DbSet<CustomerDemographics> CustomerDemographics { get; set; }
-        public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<EmployeeTerritories> EmployeeTerritories { get; set; }
-        public virtual DbSet<Employees> Employees { get; set; }
-        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
-        public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<Products> Products { get; set; }
-        public virtual DbSet<Region> Region { get; set; }
-        public virtual DbSet<Shippers> Shippers { get; set; }
-        public virtual DbSet<Suppliers> Suppliers { get; set; }
-        public virtual DbSet<Territories> Territories { get; set; }
+        public  DbSet<Categories> Categories { get; set; }
+        public  DbSet<CustomerCustomerDemo> CustomerCustomerDemo { get; set; }
+        public  DbSet<CustomerDemographics> CustomerDemographics { get; set; }
+        public  DbSet<Customers> Customers { get; set; }
+        public  DbSet<EmployeeTerritories> EmployeeTerritories { get; set; }
+        public  DbSet<Employees> Employees { get; set; }
+        public  DbSet<OrderDetails> OrderDetails { get; set; }
+        public  DbSet<Orders> Orders { get; set; }
+        public  DbSet<Products> Products { get; set; }
+        public  DbSet<Region> Region { get; set; }
+        public  DbSet<Shippers> Shippers { get; set; }
+        public  DbSet<Suppliers> Suppliers { get; set; }
+        public  DbSet<Territories> Territories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

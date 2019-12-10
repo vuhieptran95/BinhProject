@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using BinhProjectMain.Dto;
 using BinhProjectMain.Models;
 using BinhProjectMain.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace BinhProjectMain.Controllers
@@ -16,20 +19,26 @@ namespace BinhProjectMain.Controllers
         private readonly NorthwindContext _context;
         private readonly ILogger<ValuesController> _logger;
         private readonly IOrderServices _orderServices;
+        private readonly IMapper _mapper;
 
-        public ValuesController(NorthwindContext context, ILogger<ValuesController> logger, IOrderServices orderServices)
+        public ValuesController(NorthwindContext context, ILogger<ValuesController> logger, IOrderServices orderServices, IMapper mapper)
         {
             _context = context;
             _logger = logger;
             _orderServices = orderServices;
+            _mapper = mapper;
         }
         // GET api/values
         [HttpGet]
         public ActionResult Get()
         {
-            var result = _orderServices.GetOrdersByCustomerId("ANATR");
-            //var products = _context.Products.ToList();
-            //_logger.LogDebug("Log thoi {@products}", products);
+            var result = _context.Customers
+                //.Include(c => c.Orders)
+                //.ThenInclude(o => o.Employee)
+                .Where(c => c.CustomerId == "ANATR")
+                .Select(CustomerDto.Projection)
+                .FirstOrDefault();
+            
             return Ok(result);
         }
 
