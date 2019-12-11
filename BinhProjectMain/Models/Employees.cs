@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BinhProjectMain.Models
 {
@@ -7,9 +8,6 @@ namespace BinhProjectMain.Models
     {
         public Employees()
         {
-            EmployeeTerritories = new HashSet<EmployeeTerritories>();
-            InverseReportsToNavigation = new HashSet<Employees>();
-            Orders = new HashSet<Orders>();
         }
 
         public int EmployeeId { get; set; }
@@ -31,9 +29,9 @@ namespace BinhProjectMain.Models
         public int? ReportsTo { get; set; }
         public string PhotoPath { get; set; }
 
-        public virtual Employees ReportsToNavigation { get; set; }
-        public virtual ICollection<EmployeeTerritories> EmployeeTerritories { get; set; }
-        public virtual ICollection<Employees> InverseReportsToNavigation { get; set; }
-        public virtual ICollection<Orders> Orders { get; set; }
+        public Employees ReportsToNavigation { get; set; }
+        public IQueryable<EmployeeTerritories> EmployeeTerritories { get; set; }
+        public IQueryable<Employees> InverseReportsToNavigation { get; set; }
+        public IQueryable<Orders> Orders { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace BinhProjectMain
         {
             CreateMap<Customers, CustomerDto>();
             CreateMap<Orders, OrderDto>();
+            CreateMap<Employees, EmployeeDto>();
         }
     }
 }

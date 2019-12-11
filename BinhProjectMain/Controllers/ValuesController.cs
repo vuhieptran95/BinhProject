@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using BinhProjectMain.Dto;
 using BinhProjectMain.Models;
 using BinhProjectMain.Services;
@@ -32,12 +33,18 @@ namespace BinhProjectMain.Controllers
         [HttpGet]
         public ActionResult Get()
         {
+            var dtoCustomerQueryable = _context.Customers.Select(c => new
+            {
+                TestId = c.CustomerId
+            });
+
             var result = _context.Customers
                 //.Include(c => c.Orders)
                 //.ThenInclude(o => o.Employee)
-                .Where(c => c.CustomerId == "ANATR")
-                .Select(CustomerDto.Projection)
-                .FirstOrDefault();
+                //.Select(CustomerDto.Projection)
+                //.ForEachAsync(c =>)
+                .ProjectTo<CustomerDto>(_mapper.ConfigurationProvider, new { })
+                .FirstOrDefault(c => c.CustomerId == "ANATR");
             
             return Ok(result);
         }

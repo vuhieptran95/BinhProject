@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BinhProjectMain.Models
 {
@@ -8,7 +9,6 @@ namespace BinhProjectMain.Models
         public Customers()
         {
             CustomerCustomerDemo = new HashSet<CustomerCustomerDemo>();
-            Orders = new HashSet<Orders>();
         }
 
         public string CustomerId { get; set; }
@@ -23,7 +23,7 @@ namespace BinhProjectMain.Models
         public string Phone { get; set; }
         public string Fax { get; set; }
 
-        public virtual ICollection<CustomerCustomerDemo> CustomerCustomerDemo { get; set; }
-        public ICollection<Orders> Orders { get; set; }
+        public ICollection<CustomerCustomerDemo> CustomerCustomerDemo { get; set; }
+        public IQueryable<Orders> Orders { get; set; }
     }
 }
