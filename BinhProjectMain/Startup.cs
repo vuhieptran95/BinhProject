@@ -31,6 +31,8 @@ namespace BinhProjectMain
             services.AddDbContext<NorthwindContext>();
 
             services.AddScoped<IOrderServices, OrderServices>();
+            services.AddScoped<IProductServices, ProductServices>();
+            services.AddScoped<ICategoryServices, CategoryServices>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
